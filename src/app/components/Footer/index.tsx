@@ -1,7 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { TODO_FILTER_TITLES, TODO_FILTER_TYPES, TodoFilter } from 'constants/todos';
+import {
+  TODO_FILTER_TITLES,
+  TODO_FILTER_TYPES,
+  TodoFilter,
+} from 'constants/todos';
 
 import * as style from './style.css';
 
@@ -14,7 +18,6 @@ export interface IFooterProps {
 }
 
 export class Footer extends React.Component<IFooterProps, any> {
-
   private renderTodoCount() {
     const { activeCount } = this.props;
     const itemWord = activeCount === 1 ? 'item' : 'items';
@@ -34,9 +37,11 @@ export class Footer extends React.Component<IFooterProps, any> {
     });
 
     return (
-      <a className={className}
+      <a
+        className={className}
         style={{ cursor: 'pointer' }}
-        onClick={() => onChangeFilter(filter)}>
+        onClick={() => onChangeFilter(filter)}
+      >
         {title}
       </a>
     );
@@ -58,7 +63,7 @@ export class Footer extends React.Component<IFooterProps, any> {
       <footer className={style.normal}>
         {this.renderTodoCount()}
         <ul className={style.filters}>
-          {TODO_FILTER_TYPES.map((filter) =>
+          {TODO_FILTER_TYPES.map(filter =>
             <li key={filter} children={this.renderFilterLink(filter)} />,
           )}
         </ul>

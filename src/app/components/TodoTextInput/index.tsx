@@ -15,8 +15,10 @@ export interface ITodoTextInputState {
   text: string;
 }
 
-export class TodoTextInput extends React.Component<ITodoTextInputProps, ITodoTextInputState> {
-
+export class TodoTextInput extends React.Component<
+  ITodoTextInputProps,
+  ITodoTextInputState
+> {
   constructor(props?: ITodoTextInputProps, context?: any) {
     super(props, context);
     this.state = {
@@ -49,20 +51,25 @@ export class TodoTextInput extends React.Component<ITodoTextInputProps, ITodoTex
   }
 
   public render() {
-    const classes = classNames({
-      [style.edit]: this.props.editing,
-      [style.new]: this.props.newTodo,
-    }, style.normal);
+    const classes = classNames(
+      {
+        [style.edit]: this.props.editing,
+        [style.new]: this.props.newTodo,
+      },
+      style.normal,
+    );
 
     return (
-      <input className={classes}
+      <input
+        className={classes}
         type="text"
         autoFocus
         placeholder={this.props.placeholder}
         value={this.state.text}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
-        onKeyDown={this.handleSubmit} />
+        onKeyDown={this.handleSubmit}
+      />
     );
   }
 }

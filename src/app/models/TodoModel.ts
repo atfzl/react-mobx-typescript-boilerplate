@@ -1,8 +1,7 @@
 import { observable } from 'mobx';
 
 export class TodoModel {
-
-  public  readonly id: number;
+  public readonly id: number;
   @observable public text: string;
   @observable public completed: boolean;
 

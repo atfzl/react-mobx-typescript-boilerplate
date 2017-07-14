@@ -20,7 +20,6 @@ export interface ITodoState {
 }
 
 export class TodoItem extends React.Component<ITodoProps, ITodoState> {
-
   constructor(props?: ITodoProps, context?: any) {
     super(props, context);
     this.state = { editing: false };
@@ -37,7 +36,11 @@ export class TodoItem extends React.Component<ITodoProps, ITodoState> {
   private handleToggleCheckbox(e: React.SyntheticEvent<any>) {
     const { todo } = this.props;
     const target = e.target as any;
-    if (target && target.checked !== undefined && target.checked !== todo.completed) {
+    if (
+      target &&
+      target.checked !== undefined &&
+      target.checked !== todo.completed
+    ) {
       this.updateTodo({ completed: target.checked });
     }
   }
@@ -60,23 +63,29 @@ export class TodoItem extends React.Component<ITodoProps, ITodoState> {
   public render() {
     const { todo, deleteTodo } = this.props;
 
-    const element = this.state.editing ?
-      <TodoTextInput text={todo.text}
-        editing={this.state.editing}
-        onSave={(text) => this.updateTodo({ text })} />
-      :
-      <div className={style.view}>
-        <input className={style.toggle}
-          type="checkbox"
-          checked={todo.completed}
-          onChange={this.handleToggleCheckbox} />
+    const element = this.state.editing
+      ? <TodoTextInput
+          text={todo.text}
+          editing={this.state.editing}
+          onSave={text => this.updateTodo({ text })}
+        />
+      : <div className={style.view}>
+          <input
+            className={style.toggle}
+            type="checkbox"
+            checked={todo.completed}
+            onChange={this.handleToggleCheckbox}
+          />
 
-        <label onDoubleClick={this.handleDoubleClick}>
-          {todo.text}
-        </label>
+          <label onDoubleClick={this.handleDoubleClick}>
+            {todo.text}
+          </label>
 
-        <button className={style.destroy} onClick={this.handleClickDeleteButton} />
-      </div>;
+          <button
+            className={style.destroy}
+            onClick={this.handleClickDeleteButton}
+          />
+        </div>;
 
     const classes = classNames({
       [style.completed]: todo.completed,

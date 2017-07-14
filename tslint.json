@@ -8,6 +8,7 @@
     "ter-indent": [true, 2],
     "quotemark": [
       "single"
-    ]
+    ],
+    "arrow-parens": false
   }
 }

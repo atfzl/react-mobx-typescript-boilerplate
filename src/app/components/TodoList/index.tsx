@@ -12,7 +12,6 @@ export interface ITodoListProps extends ITodoActions {
 }
 
 export class TodoList extends React.Component<ITodoListProps, any> {
-
   constructor(props?: ITodoListProps, context?: any) {
     super(props, context);
     this.handleToggleAll = this.handleToggleAll.bind(this);
@@ -32,7 +31,8 @@ export class TodoList extends React.Component<ITodoListProps, any> {
           className={style.toggleAll}
           type="checkbox"
           checked={completedCount === todos.length}
-          onChange={this.handleToggleAll} />
+          onChange={this.handleToggleAll}
+        />
       );
     }
   }
@@ -43,7 +43,7 @@ export class TodoList extends React.Component<ITodoListProps, any> {
       <section className={style.main}>
         {this.renderToggleAll()}
         <ul className={style.normal}>
-          {todos.map((todo) =>
+          {todos.map(todo =>
             <TodoItem key={todo.id} todo={todo} {...actions} />,
           )}
         </ul>

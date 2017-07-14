@@ -20,7 +20,6 @@ interface ITodoAppState {
 @inject(STORE_TODO, STORE_ROUTER)
 @observer
 export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
-
   constructor(props: TodoAppProps, context: any) {
     super(props, context);
     this.state = { filter: TodoFilter.ALL };
@@ -38,8 +37,8 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
   private checkLocationChange() {
     const router = this.props[STORE_ROUTER] as RouterStore;
     const filter = Object.keys(TODO_FILTER_LOCATION_HASH)
-      .map((key) => Number(key) as TodoFilter)
-      .find((f) => TODO_FILTER_LOCATION_HASH[f] === router.location.hash);
+      .map(key => Number(key) as TodoFilter)
+      .find(f => TODO_FILTER_LOCATION_HASH[f] === router.location.hash);
     this.setState({ filter });
   }
 
@@ -55,9 +54,12 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
   private getFilteredTodo(filter: TodoFilter) {
     const todoStore = this.props[STORE_TODO] as TodoStore;
     switch (filter) {
-    case TodoFilter.ACTIVE: return todoStore.activeTodos;
-    case TodoFilter.COMPLETED: return todoStore.completedTodos;
-    default: return todoStore.todos;
+      case TodoFilter.ACTIVE:
+        return todoStore.activeTodos;
+      case TodoFilter.COMPLETED:
+        return todoStore.completedTodos;
+      default:
+        return todoStore.todos;
     }
   }
 
@@ -67,21 +69,25 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
     const { filter } = this.state;
     const filteredTodos = this.getFilteredTodo(filter);
 
-    const footer = todoStore.todos.length ? (
-      <Footer filter={filter}
-        activeCount={todoStore.activeTodos.length}
-        completedCount={todoStore.completedTodos.length}
-        onClearCompleted={todoStore.clearCompleted}
-        onChangeFilter={this.handleFilter} />
-    ) : undefined;
+    const footer = todoStore.todos.length
+      ? <Footer
+          filter={filter}
+          activeCount={todoStore.activeTodos.length}
+          completedCount={todoStore.completedTodos.length}
+          onClearCompleted={todoStore.clearCompleted}
+          onChangeFilter={this.handleFilter}
+        />
+      : undefined;
 
     return (
-      <div className={style.normal} >
+      <div className={style.normal}>
         <Header addTodo={todoStore.addTodo} />
-        <TodoList todos={filteredTodos}
+        <TodoList
+          todos={filteredTodos}
           completeAll={todoStore.completeAll}
           deleteTodo={todoStore.deleteTodo}
-          editTodo={todoStore.editTodo} />
+          editTodo={todoStore.editTodo}
+        />
         {footer}
         {children}
       </div>

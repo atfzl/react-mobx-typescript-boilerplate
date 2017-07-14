@@ -8,7 +8,6 @@ export interface IHeaderProps {
 }
 
 export class Header extends React.Component<IHeaderProps, any> {
-
   constructor(props?: IHeaderProps, context?: any) {
     super(props, context);
     this.handleSave = this.handleSave.bind(this);
@@ -27,7 +26,8 @@ export class Header extends React.Component<IHeaderProps, any> {
         <TodoTextInput
           newTodo
           onSave={this.handleSave}
-          placeholder="What needs to be done?" />
+          placeholder="What needs to be done?"
+        />
       </header>
     );
   }

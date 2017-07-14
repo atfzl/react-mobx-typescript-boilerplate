@@ -2,7 +2,6 @@ import { action, computed, observable } from 'mobx';
 import { TodoModel } from 'models';
 
 export class TodoStore {
-
   constructor(fixtures: TodoModel[]) {
     this.todos = fixtures;
     this.addTodo = this.addTodo.bind(this);
@@ -12,17 +11,16 @@ export class TodoStore {
     this.clearCompleted = this.clearCompleted.bind(this);
   }
 
-  @observable
-  public todos: TodoModel[];
+  @observable public todos: TodoModel[];
 
   @computed
   get activeTodos() {
-    return this.todos.filter((todo) => !todo.completed);
+    return this.todos.filter(todo => !todo.completed);
   }
 
   @computed
   get completedTodos() {
-    return this.todos.filter((todo) => todo.completed);
+    return this.todos.filter(todo => todo.completed);
   }
 
   @action
@@ -32,7 +30,7 @@ export class TodoStore {
 
   @action
   public editTodo(id: number, data: Partial<TodoModel>): void {
-    this.todos = this.todos.map((todo) => {
+    this.todos = this.todos.map(todo => {
       if (todo.id === id) {
         if (typeof data.completed === 'boolean') {
           todo.completed = data.completed;
@@ -47,17 +45,17 @@ export class TodoStore {
 
   @action
   public deleteTodo(id: number): void {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
+    this.todos = this.todos.filter(todo => todo.id !== id);
   }
 
   @action
   public completeAll(): void {
-    this.todos = this.todos.map((todo) => ({ ...todo, completed: true }));
+    this.todos = this.todos.map(todo => ({ ...todo, completed: true }));
   }
 
   @action
   public clearCompleted(): void {
-    this.todos = this.todos.filter((todo) => !todo.completed);
+    this.todos = this.todos.filter(todo => !todo.completed);
   }
 }
 
