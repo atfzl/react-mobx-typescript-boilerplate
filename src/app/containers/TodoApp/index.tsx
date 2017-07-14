@@ -2,13 +2,14 @@ import * as React from 'react';
 import * as style from './style.css';
 import { inject, observer } from 'mobx-react';
 import { RouteComponentProps } from 'react-router';
-import { Header } from '../../components/Header';
-import { TodoList } from '../../components/TodoList';
-import { Footer } from '../../components/Footer';
-import { TodoModel } from '../../models/TodoModel';
-import { TodoStore, RouterStore } from '../../stores';
-import { STORE_TODO, STORE_ROUTER } from '../../constants/stores';
-import { TodoFilter, TODO_FILTER_LOCATION_HASH } from '../../constants/todos';
+
+import { Header } from 'components/Header';
+import { TodoList } from 'components/TodoList';
+import { Footer } from 'components/Footer';
+import { TodoModel } from 'models/TodoModel';
+import { TodoStore, RouterStore } from 'stores';
+import { STORE_TODO, STORE_ROUTER } from 'constants/stores';
+import { TodoFilter, TODO_FILTER_LOCATION_HASH } from 'constants/todos';
 
 export interface TodoAppProps extends RouteComponentProps<any> {
   /** MobX Stores will be injected via @inject() **/

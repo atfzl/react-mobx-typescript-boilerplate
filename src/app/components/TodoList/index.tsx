@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Footer } from '../Footer';
-import { TodoItem, TodoActions } from '../TodoItem';
-import { TodoModel } from '../../models/TodoModel';
+
+import { Footer } from 'components/Footer';
+import { TodoItem, TodoActions } from 'components/TodoItem';
+import { TodoModel } from 'models/TodoModel';
+
 import * as style from './style.css';
 
 export interface TodoListProps extends TodoActions {
