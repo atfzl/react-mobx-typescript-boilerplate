@@ -3,28 +3,24 @@ import * as React from 'react';
 import { TodoTextInput } from 'components/TodoTextInput';
 import { TodoModel } from 'models/TodoModel';
 
-export interface HeaderProps {
+export interface IHeaderProps {
   addTodo: (todo: Partial<TodoModel>) => any;
 }
 
-export interface HeaderState {
-  /* empty */
-}
+export class Header extends React.Component<IHeaderProps, any> {
 
-export class Header extends React.Component<HeaderProps, HeaderState> {
-
-  constructor(props?: HeaderProps, context?: any) {
+  constructor(props?: IHeaderProps, context?: any) {
     super(props, context);
     this.handleSave = this.handleSave.bind(this);
   }
 
-  handleSave(text: string) {
+  private handleSave(text: string) {
     if (text.length) {
       this.props.addTodo({ text });
     }
   }
 
-  render() {
+  public render() {
     return (
       <header>
         <h1>Todos</h1>

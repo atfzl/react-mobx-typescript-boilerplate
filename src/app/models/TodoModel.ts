@@ -2,7 +2,7 @@ import { observable } from 'mobx';
 
 export class TodoModel {
 
-  readonly id: number;
+  public  readonly id: number;
   @observable public text: string;
   @observable public completed: boolean;
 
@@ -12,8 +12,8 @@ export class TodoModel {
     this.completed = completed;
   }
 
-  static nextId = 1;
-  static generateId() {
+  public static nextId = 1;
+  public static generateId() {
     return this.nextId++;
   }
 }

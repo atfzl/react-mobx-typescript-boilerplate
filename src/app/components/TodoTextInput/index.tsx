@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import * as style from './style.css';
 
-export interface TodoTextInputProps {
+export interface ITodoTextInputProps {
   text?: string;
   placeholder?: string;
   newTodo?: boolean;
@@ -11,13 +11,13 @@ export interface TodoTextInputProps {
   onSave: (text: string) => any;
 }
 
-export interface TodoTextInputState {
+export interface ITodoTextInputState {
   text: string;
 }
 
-export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextInputState> {
+export class TodoTextInput extends React.Component<ITodoTextInputProps, ITodoTextInputState> {
 
-  constructor(props?: TodoTextInputProps, context?: any) {
+  constructor(props?: ITodoTextInputProps, context?: any) {
     super(props, context);
     this.state = {
       text: this.props.text || '',
@@ -27,7 +27,7 @@ export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextI
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit(e) {
+  private handleSubmit(e) {
     const text = e.target.value.trim();
     if (e.which === 13) {
       this.props.onSave(text);
@@ -37,18 +37,18 @@ export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextI
     }
   }
 
-  handleChange(e) {
+  private handleChange(e) {
     this.setState({ text: e.target.value });
   }
 
-  handleBlur(e) {
+  private handleBlur(e) {
     const text = e.target.value.trim();
     if (!this.props.newTodo) {
       this.props.onSave(text);
     }
   }
 
-  render() {
+  public render() {
     const classes = classNames({
       [style.edit]: this.props.editing,
       [style.new]: this.props.newTodo,

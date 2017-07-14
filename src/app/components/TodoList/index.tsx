@@ -1,33 +1,29 @@
 import * as React from 'react';
 
 import { Footer } from 'components/Footer';
-import { TodoActions, TodoItem } from 'components/TodoItem';
+import { ITodoActions, TodoItem } from 'components/TodoItem';
 import { TodoModel } from 'models/TodoModel';
 
 import * as style from './style.css';
 
-export interface TodoListProps extends TodoActions {
+export interface ITodoListProps extends ITodoActions {
   todos: TodoModel[];
   completeAll: () => any;
 }
 
-export interface TodoListState {
+export class TodoList extends React.Component<ITodoListProps, any> {
 
-}
-
-export class TodoList extends React.Component<TodoListProps, TodoListState> {
-
-  constructor(props?: TodoListProps, context?: any) {
+  constructor(props?: ITodoListProps, context?: any) {
     super(props, context);
     this.handleToggleAll = this.handleToggleAll.bind(this);
   }
 
-  handleToggleAll(e: React.SyntheticEvent<any>) {
+  private handleToggleAll(e: React.SyntheticEvent<any>) {
     e.preventDefault();
     this.props.completeAll();
   }
 
-  renderToggleAll() {
+  private renderToggleAll() {
     const { todos, ...actions } = this.props;
     const completedCount = todos.length;
     if (todos.length > 0) {
@@ -41,7 +37,7 @@ export class TodoList extends React.Component<TodoListProps, TodoListState> {
     }
   }
 
-  render() {
+  public render() {
     const { todos, ...actions } = this.props;
     return (
       <section className={style.main}>

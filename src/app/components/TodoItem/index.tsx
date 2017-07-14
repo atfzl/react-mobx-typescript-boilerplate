@@ -6,22 +6,22 @@ import { TodoModel } from 'models/TodoModel';
 
 import * as style from './style.css';
 
-export interface TodoActions {
+export interface ITodoActions {
   editTodo: (id: number, data: Partial<TodoModel>) => any;
   deleteTodo: (id: number) => any;
 }
 
-export interface TodoProps extends TodoActions {
+export interface ITodoProps extends ITodoActions {
   todo: TodoModel;
 }
 
-export interface TodoState {
+export interface ITodoState {
   editing: boolean;
 }
 
-export class TodoItem extends React.Component<TodoProps, TodoState> {
+export class TodoItem extends React.Component<ITodoProps, ITodoState> {
 
-  constructor(props?: TodoProps, context?: any) {
+  constructor(props?: ITodoProps, context?: any) {
     super(props, context);
     this.state = { editing: false };
     this.updateTodo = this.updateTodo.bind(this);
@@ -30,11 +30,11 @@ export class TodoItem extends React.Component<TodoProps, TodoState> {
     this.handleToggleCheckbox = this.handleToggleCheckbox.bind(this);
   }
 
-  handleDoubleClick(e: React.SyntheticEvent<any>) {
+  private handleDoubleClick(e: React.SyntheticEvent<any>) {
     this.setState({ editing: true });
   }
 
-  handleToggleCheckbox(e: React.SyntheticEvent<any>) {
+  private handleToggleCheckbox(e: React.SyntheticEvent<any>) {
     const { todo } = this.props;
     const target = e.target as any;
     if (target && target.checked !== undefined && target.checked !== todo.completed) {
@@ -42,12 +42,12 @@ export class TodoItem extends React.Component<TodoProps, TodoState> {
     }
   }
 
-  handleClickDeleteButton(e: React.SyntheticEvent<any>) {
+  private handleClickDeleteButton(e: React.SyntheticEvent<any>) {
     const { todo, deleteTodo } = this.props;
     deleteTodo(todo.id);
   }
 
-  updateTodo(data: Partial<TodoModel>) {
+  private updateTodo(data: Partial<TodoModel>) {
     const { todo } = this.props;
     if (data.text !== undefined && data.text.trim().length === 0) {
       this.props.deleteTodo(todo.id);
@@ -57,7 +57,7 @@ export class TodoItem extends React.Component<TodoProps, TodoState> {
     this.setState({ editing: false });
   }
 
-  render() {
+  public render() {
     const { todo, deleteTodo } = this.props;
 
     const element = this.state.editing ?

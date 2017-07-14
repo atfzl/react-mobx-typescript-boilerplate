@@ -5,7 +5,7 @@ import { TODO_FILTER_TITLES, TODO_FILTER_TYPES, TodoFilter } from 'constants/tod
 
 import * as style from './style.css';
 
-export interface FooterProps {
+export interface IFooterProps {
   filter: TodoFilter;
   activeCount: number;
   completedCount: number;
@@ -13,13 +13,9 @@ export interface FooterProps {
   onClearCompleted: () => any;
 }
 
-export interface FooterState {
-  /* empty */
-}
+export class Footer extends React.Component<IFooterProps, any> {
 
-export class Footer extends React.Component<FooterProps, FooterState> {
-
-  renderTodoCount() {
+  private renderTodoCount() {
     const { activeCount } = this.props;
     const itemWord = activeCount === 1 ? 'item' : 'items';
 
@@ -30,7 +26,7 @@ export class Footer extends React.Component<FooterProps, FooterState> {
     );
   }
 
-  renderFilterLink(filter: TodoFilter) {
+  private renderFilterLink(filter: TodoFilter) {
     const title = TODO_FILTER_TITLES[filter];
     const { filter: selectedFilter, onChangeFilter } = this.props;
     const className = classNames({
@@ -46,7 +42,7 @@ export class Footer extends React.Component<FooterProps, FooterState> {
     );
   }
 
-  renderClearButton() {
+  private renderClearButton() {
     const { completedCount, onClearCompleted } = this.props;
     if (completedCount > 0) {
       return (
@@ -57,7 +53,7 @@ export class Footer extends React.Component<FooterProps, FooterState> {
     }
   }
 
-  render() {
+  public render() {
     return (
       <footer className={style.normal}>
         {this.renderTodoCount()}
