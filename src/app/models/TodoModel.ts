@@ -10,7 +10,7 @@ export class TodoModel {
     this.id = TodoModel.generateId();
     this.text = text;
     this.completed = completed;
-  };
+  }
 
   static nextId = 1;
   static generateId() {

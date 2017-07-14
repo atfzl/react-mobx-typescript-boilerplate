@@ -1,15 +1,15 @@
-import * as React from 'react';
-import * as style from './style.css';
 import { inject, observer } from 'mobx-react';
+import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
+import * as style from './style.css';
 
+import { Footer } from 'components/Footer';
 import { Header } from 'components/Header';
 import { TodoList } from 'components/TodoList';
-import { Footer } from 'components/Footer';
+import { STORE_ROUTER, STORE_TODO } from 'constants/stores';
+import { TODO_FILTER_LOCATION_HASH, TodoFilter } from 'constants/todos';
 import { TodoModel } from 'models/TodoModel';
-import { TodoStore, RouterStore } from 'stores';
-import { STORE_TODO, STORE_ROUTER } from 'constants/stores';
-import { TodoFilter, TODO_FILTER_LOCATION_HASH } from 'constants/todos';
+import { RouterStore, TodoStore } from 'stores';
 
 export interface TodoAppProps extends RouteComponentProps<any> {
   /** MobX Stores will be injected via @inject() **/
@@ -59,9 +59,9 @@ export class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
   getFilteredTodo(filter: TodoFilter) {
     const todoStore = this.props[STORE_TODO] as TodoStore;
     switch (filter) {
-      case TodoFilter.ACTIVE: return todoStore.activeTodos;
-      case TodoFilter.COMPLETED: return todoStore.completedTodos;
-      default: return todoStore.todos;
+    case TodoFilter.ACTIVE: return todoStore.activeTodos;
+    case TodoFilter.COMPLETED: return todoStore.completedTodos;
+    default: return todoStore.todos;
     }
   }
 
@@ -91,4 +91,4 @@ export class TodoApp extends React.Component<TodoAppProps, TodoAppState> {
       </div>
     );
   }
-};
+}

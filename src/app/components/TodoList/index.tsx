@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Footer } from 'components/Footer';
-import { TodoItem, TodoActions } from 'components/TodoItem';
+import { TodoActions, TodoItem } from 'components/TodoItem';
 import { TodoModel } from 'models/TodoModel';
 
 import * as style from './style.css';
@@ -9,11 +9,11 @@ import * as style from './style.css';
 export interface TodoListProps extends TodoActions {
   todos: TodoModel[];
   completeAll: () => any;
-};
+}
 
 export interface TodoListState {
 
-};
+}
 
 export class TodoList extends React.Component<TodoListProps, TodoListState> {
 
@@ -47,8 +47,8 @@ export class TodoList extends React.Component<TodoListProps, TodoListState> {
       <section className={style.main}>
         {this.renderToggleAll()}
         <ul className={style.normal}>
-          {todos.map(todo =>
-            <TodoItem key={todo.id} todo={todo} {...actions} />
+          {todos.map((todo) =>
+            <TodoItem key={todo.id} todo={todo} {...actions} />,
           )}
         </ul>
       </section>

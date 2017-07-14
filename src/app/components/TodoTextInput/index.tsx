@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 
 import * as style from './style.css';
 
@@ -9,18 +9,18 @@ export interface TodoTextInputProps {
   newTodo?: boolean;
   editing?: boolean;
   onSave: (text: string) => any;
-};
+}
 
 export interface TodoTextInputState {
   text: string;
-};
+}
 
 export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextInputState> {
 
   constructor(props?: TodoTextInputProps, context?: any) {
     super(props, context);
     this.state = {
-      text: this.props.text || ''
+      text: this.props.text || '',
     };
     this.handleBlur = this.handleBlur.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +30,7 @@ export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextI
   handleSubmit(e) {
     const text = e.target.value.trim();
     if (e.which === 13) {
-      this.props.onSave(text)
+      this.props.onSave(text);
       if (this.props.newTodo) {
         this.setState({ text: '' });
       }
@@ -51,7 +51,7 @@ export class TodoTextInput extends React.Component<TodoTextInputProps, TodoTextI
   render() {
     const classes = classNames({
       [style.edit]: this.props.editing,
-      [style.new]: this.props.newTodo
+      [style.new]: this.props.newTodo,
     }, style.normal);
 
     return (

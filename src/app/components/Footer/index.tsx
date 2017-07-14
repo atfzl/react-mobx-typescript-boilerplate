@@ -1,7 +1,7 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 
-import { TodoFilter, TODO_FILTER_TITLES, TODO_FILTER_TYPES } from 'constants/todos';
+import { TODO_FILTER_TITLES, TODO_FILTER_TYPES, TodoFilter } from 'constants/todos';
 
 import * as style from './style.css';
 
@@ -11,7 +11,7 @@ export interface FooterProps {
   completedCount: number;
   onChangeFilter: (filter: TodoFilter) => any;
   onClearCompleted: () => any;
-};
+}
 
 export interface FooterState {
   /* empty */
@@ -34,7 +34,7 @@ export class Footer extends React.Component<FooterProps, FooterState> {
     const title = TODO_FILTER_TITLES[filter];
     const { filter: selectedFilter, onChangeFilter } = this.props;
     const className = classNames({
-      [style.selected]: filter === selectedFilter
+      [style.selected]: filter === selectedFilter,
     });
 
     return (
@@ -63,7 +63,7 @@ export class Footer extends React.Component<FooterProps, FooterState> {
         {this.renderTodoCount()}
         <ul className={style.filters}>
           {TODO_FILTER_TYPES.map((filter) =>
-            <li key={filter} children={this.renderFilterLink(filter)} />
+            <li key={filter} children={this.renderFilterLink(filter)} />,
           )}
         </ul>
         {this.renderClearButton()}

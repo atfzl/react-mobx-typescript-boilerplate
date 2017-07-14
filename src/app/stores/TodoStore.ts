@@ -1,4 +1,4 @@
-import { observable, computed, action } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { TodoModel } from 'models';
 
 export class TodoStore {
@@ -13,7 +13,7 @@ export class TodoStore {
   }
 
   @observable
-  public todos: Array<TodoModel>;
+  public todos: TodoModel[];
 
   @computed
   get activeTodos() {
@@ -26,37 +26,37 @@ export class TodoStore {
   }
 
   @action
-  addTodo(item: Partial<TodoModel>): void {
+  public addTodo(item: Partial<TodoModel>): void {
     this.todos.push(new TodoModel(item.text, item.completed));
   }
 
   @action
-  editTodo(id: number, data: Partial<TodoModel>): void {
+  public editTodo(id: number, data: Partial<TodoModel>): void {
     this.todos = this.todos.map((todo) => {
       if (todo.id === id) {
-        if (typeof data.completed == 'boolean') {
+        if (typeof data.completed === 'boolean') {
           todo.completed = data.completed;
         }
-        if (typeof data.text == 'string') {
+        if (typeof data.text === 'string') {
           todo.text = data.text;
         }
       }
       return todo;
-    })
+    });
   }
 
   @action
-  deleteTodo(id: number): void {
+  public deleteTodo(id: number): void {
     this.todos = this.todos.filter((todo) => todo.id !== id);
   }
 
   @action
-  completeAll(): void {
+  public completeAll(): void {
     this.todos = this.todos.map((todo) => ({ ...todo, completed: true }));
   }
 
   @action
-  clearCompleted(): void {
+  public clearCompleted(): void {
     this.todos = this.todos.filter((todo) => !todo.completed);
   }
 }

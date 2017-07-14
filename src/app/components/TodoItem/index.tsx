@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as classNames from 'classnames';
+import * as React from 'react';
 
 import { TodoTextInput } from 'components/TodoTextInput';
 import { TodoModel } from 'models/TodoModel';
@@ -13,11 +13,11 @@ export interface TodoActions {
 
 export interface TodoProps extends TodoActions {
   todo: TodoModel;
-};
+}
 
 export interface TodoState {
   editing: boolean;
-};
+}
 
 export class TodoItem extends React.Component<TodoProps, TodoState> {
 
@@ -81,7 +81,7 @@ export class TodoItem extends React.Component<TodoProps, TodoState> {
     const classes = classNames({
       [style.completed]: todo.completed,
       [style.editing]: this.state.editing,
-      [style.normal]: !this.state.editing
+      [style.normal]: !this.state.editing,
     });
 
     return (

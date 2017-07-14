@@ -7,7 +7,7 @@ export class Root extends React.Component<any, any> {
       const DevTools = require('mobx-react-devtools').default;
       return (<DevTools />);
     }
-  };
+  }
 
   render() {
     return (
@@ -17,4 +17,4 @@ export class Root extends React.Component<any, any> {
       </div>
     );
   }
-};
+}
