@@ -47,7 +47,7 @@ module.exports = {
             'awesome-typescript-loader'
           ]
       },
-      // css 
+      // css
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -77,13 +77,14 @@ module.exports = {
           ]
         })
       },
-      // static assets 
+      // static assets
       { test: /\.html$/, use: 'html-loader' },
       { test: /\.png$/, use: 'url-loader?limit=10000' },
       { test: /\.jpg$/, use: 'file-loader' },
     ],
   },
   plugins: [
+    new webpack.NamedModulesPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         context: sourcePath,
@@ -118,7 +119,7 @@ module.exports = {
     },
   },
   node: {
-    // workaround for webpack-dev-server issue 
+    // workaround for webpack-dev-server issue
     // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
     fs: 'empty',
     net: 'empty'
