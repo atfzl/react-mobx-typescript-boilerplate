@@ -12,8 +12,8 @@ import TodoApp from 'containers/TodoApp';
 import TodoModel from 'models/TodoModel';
 import { RouterStore, TodoStore } from 'stores';
 
-const Button = asyncComponent({
-  resolve: () => import(/* webpackChunkName: "Button" */ 'components/Button'),
+const Error = asyncComponent({
+  resolve: () => import(/* webpackChunkName: "Error" */ 'components/Error'),
 });
 
 // enable MobX strict mode
@@ -40,8 +40,8 @@ ReactDOM.render(
     <Root>
       <Router history={history}>
         <Switch>
-          <Route path="/button" component={Button} />
-          <Route path="/" component={TodoApp} />
+          <Route exact path="/" component={TodoApp} />
+          <Route component={Error} />
         </Switch>
       </Router>
     </Root>
