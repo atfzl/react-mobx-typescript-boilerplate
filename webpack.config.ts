@@ -8,12 +8,6 @@ const DEBUG = !process.argv.includes('-p');
 const sourcePath = path.join(__dirname, './src');
 const outPath = path.join(__dirname, './dist');
 
-const GLOBALS = {
-  'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
-  'process.env.BROWSER': true,
-  __DEV__: DEBUG,
-};
-
 const config: webpack.Configuration = {
   context: sourcePath,
   entry: {
@@ -89,12 +83,17 @@ const config: webpack.Configuration = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin(GLOBALS),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
+      'process.env.BROWSER': true,
+      __DEV__: DEBUG,
+    }),
     new webpack.NamedModulesPlugin(),
+    // Move modules that occur in multiple entry chunks to a new entry chunk (the commons chunk).
+    // https://webpack.js.org/plugins/commons-chunk-plugin/
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.bundle.js',
-      minChunks: Infinity,
+      minChunks: module => /node_modules/.test(module.resource),
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin({
