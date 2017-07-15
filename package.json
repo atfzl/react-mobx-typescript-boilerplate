@@ -9,7 +9,9 @@
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --colors --port 3000 --open",
     "build": "webpack -p --progress --colors",
     "lint": "tslint src/**/*.{ts,tsx}",
-    "format": "prettier --single-quote --trailing-comma=all --parser=typescript src/**/*.{ts,tsx} --write"
+    "format": "prettier --single-quote --trailing-comma=all --parser=typescript src/**/*.{ts,tsx} --write",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "license": "MIT",
   "devDependencies": {
@@ -43,7 +45,8 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.2.0",
     "webpack-dev-server": "^2.5.0",
-    "webpack-hot-middleware": "^2.18.0"
+    "webpack-hot-middleware": "^2.18.0",
+    "@storybook/react": "^3.1.8"
   },
   "dependencies": {
     "classnames": "^2.2.5",
