@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx';
 import { TodoModel } from 'models';
 
-export class TodoStore {
+class TodoStore {
   constructor(fixtures: TodoModel[]) {
     this.todos = fixtures;
     this.addTodo = this.addTodo.bind(this);

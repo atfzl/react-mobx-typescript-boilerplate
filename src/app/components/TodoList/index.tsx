@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { ITodoActions, TodoItem } from 'components/TodoItem';
-import { TodoModel } from 'models/TodoModel';
+import TodoItem, { ITodoActions } from 'components/TodoItem';
+import TodoModel from 'models/TodoModel';
 
 import * as style from './style.css';
 
@@ -10,7 +10,7 @@ export interface ITodoListProps extends ITodoActions {
   completeAll: () => any;
 }
 
-export class TodoList extends React.Component<ITodoListProps, any> {
+class TodoList extends React.Component<ITodoListProps, any> {
   constructor(props?: ITodoListProps, context?: any) {
     super(props, context);
     this.handleToggleAll = this.handleToggleAll.bind(this);

@@ -6,9 +6,9 @@ import * as ReactDOM from 'react-dom';
 import { Route, Router, Switch } from 'react-router';
 
 import { STORE_ROUTER, STORE_TODO } from 'constants/stores';
-import { Root } from 'containers/Root';
-import { TodoApp } from 'containers/TodoApp';
-import { TodoModel } from 'models/TodoModel';
+import Root from 'containers/Root';
+import TodoApp from 'containers/TodoApp';
+import TodoModel from 'models/TodoModel';
 import { RouterStore, TodoStore } from 'stores';
 
 // enable MobX strict mode

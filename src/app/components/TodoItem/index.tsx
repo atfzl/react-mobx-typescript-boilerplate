@@ -1,8 +1,8 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import { TodoTextInput } from 'components/TodoTextInput';
-import { TodoModel } from 'models/TodoModel';
+import TodoTextInput from 'components/TodoTextInput';
+import TodoModel from 'models/TodoModel';
 
 import * as style from './style.css';
 
@@ -19,7 +19,7 @@ export interface ITodoState {
   editing: boolean;
 }
 
-export class TodoItem extends React.Component<ITodoProps, ITodoState> {
+class TodoItem extends React.Component<ITodoProps, ITodoState> {
   constructor(props?: ITodoProps, context?: any) {
     super(props, context);
     this.state = { editing: false };

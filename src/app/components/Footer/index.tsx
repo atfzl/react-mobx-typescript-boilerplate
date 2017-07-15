@@ -17,7 +17,7 @@ export interface IFooterProps {
   onClearCompleted: () => any;
 }
 
-export class Footer extends React.Component<IFooterProps, any> {
+class Footer extends React.Component<IFooterProps, any> {
   private renderTodoCount() {
     const { activeCount } = this.props;
     const itemWord = activeCount === 1 ? 'item' : 'items';

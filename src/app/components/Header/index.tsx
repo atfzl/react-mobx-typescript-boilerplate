@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { TodoTextInput } from 'components/TodoTextInput';
-import { TodoModel } from 'models/TodoModel';
+import TodoTextInput from 'components/TodoTextInput';
+import TodoModel from 'models/TodoModel';
 
 export interface IHeaderProps {
   addTodo: (todo: Partial<TodoModel>) => any;
 }
 
-export class Header extends React.Component<IHeaderProps, any> {
+class Header extends React.Component<IHeaderProps, any> {
   constructor(props?: IHeaderProps, context?: any) {
     super(props, context);
     this.handleSave = this.handleSave.bind(this);

@@ -15,7 +15,7 @@ export interface ITodoTextInputState {
   text: string;
 }
 
-export class TodoTextInput extends React.Component<
+class TodoTextInput extends React.Component<
   ITodoTextInputProps,
   ITodoTextInputState
 > {

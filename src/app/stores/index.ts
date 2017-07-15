@@ -1,2 +1,4 @@
-export { TodoStore } from './TodoStore';
-export { RouterStore } from './RouterStore';
+import RouterStore from './RouterStore';
+import TodoStore from './TodoStore';
+
+export { RouterStore, TodoStore };

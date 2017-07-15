@@ -3,9 +3,9 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import * as style from './style.css';
 
-import { Footer } from 'components/Footer';
-import { Header } from 'components/Header';
-import { TodoList } from 'components/TodoList';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
+import TodoList from 'components/TodoList';
 import { STORE_ROUTER, STORE_TODO } from 'constants/stores';
 import { TODO_FILTER_LOCATION_HASH, TodoFilter } from 'constants/todos';
 import { RouterStore, TodoStore } from 'stores';
@@ -18,7 +18,7 @@ interface ITodoAppState {
 
 @inject(STORE_TODO, STORE_ROUTER)
 @observer
-export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
+class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
   constructor(props: TodoAppProps, context: any) {
     super(props, context);
     this.state = { filter: TodoFilter.ALL };
@@ -95,3 +95,5 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
     );
   }
 }
+
+export default TodoApp;
