@@ -2,10 +2,10 @@ import { observable } from 'mobx';
 
 export class TodoModel {
   public readonly id: number;
-  @observable public text: string;
+  @observable public text?: string;
   @observable public completed: boolean;
 
-  constructor(text: string, completed: boolean = false) {
+  constructor(text?: string, completed: boolean = false) {
     this.id = TodoModel.generateId();
     this.text = text;
     this.completed = completed;

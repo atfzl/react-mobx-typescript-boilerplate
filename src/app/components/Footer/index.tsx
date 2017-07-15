@@ -10,7 +10,7 @@ import {
 import * as style from './style.css';
 
 export interface IFooterProps {
-  filter: TodoFilter;
+  filter?: TodoFilter;
   activeCount: number;
   completedCount: number;
   onChangeFilter: (filter: TodoFilter) => any;

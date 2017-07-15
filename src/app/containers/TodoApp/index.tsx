@@ -13,7 +13,7 @@ import { RouterStore, TodoStore } from 'stores';
 type TodoAppProps = RouteComponentProps<any>;
 
 interface ITodoAppState {
-  filter: TodoFilter;
+  filter?: TodoFilter;
 }
 
 @inject(STORE_TODO, STORE_ROUTER)
@@ -37,20 +37,24 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
     const router = this.props[STORE_ROUTER] as RouterStore;
     const filter = Object.keys(TODO_FILTER_LOCATION_HASH)
       .map(key => Number(key) as TodoFilter)
-      .find(f => TODO_FILTER_LOCATION_HASH[f] === router.location.hash);
+      .find(
+        f =>
+          TODO_FILTER_LOCATION_HASH[f] ===
+          (router.location && router.location.hash),
+      );
     this.setState({ filter });
   }
 
   private handleFilter(filter: TodoFilter) {
     const router = this.props[STORE_ROUTER] as RouterStore;
-    const currentHash = router.location.hash;
+    const currentHash = router.location && router.location.hash;
     const nextHash = TODO_FILTER_LOCATION_HASH[filter];
     if (currentHash !== nextHash) {
       router.replace(nextHash);
     }
   }
 
-  private getFilteredTodo(filter: TodoFilter) {
+  private getFilteredTodo(filter?: TodoFilter) {
     const todoStore = this.props[STORE_TODO] as TodoStore;
     switch (filter) {
       case TodoFilter.ACTIVE:
