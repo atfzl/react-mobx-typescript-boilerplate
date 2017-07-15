@@ -90,7 +90,7 @@ const config: webpack.Configuration = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin({
-      filename: 'styled.css',
+      filename: 'styles.css',
       disable: !isProduction,
     }),
     new HtmlWebpackPlugin({
