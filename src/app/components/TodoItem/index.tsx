@@ -29,7 +29,7 @@ export class TodoItem extends React.Component<ITodoProps, ITodoState> {
     this.handleToggleCheckbox = this.handleToggleCheckbox.bind(this);
   }
 
-  private handleDoubleClick(e: React.SyntheticEvent<any>) {
+  private handleDoubleClick() {
     this.setState({ editing: true });
   }
 
@@ -45,7 +45,7 @@ export class TodoItem extends React.Component<ITodoProps, ITodoState> {
     }
   }
 
-  private handleClickDeleteButton(e: React.SyntheticEvent<any>) {
+  private handleClickDeleteButton() {
     const { todo, deleteTodo } = this.props;
     deleteTodo(todo.id);
   }
@@ -61,7 +61,7 @@ export class TodoItem extends React.Component<ITodoProps, ITodoState> {
   }
 
   public render() {
-    const { todo, deleteTodo } = this.props;
+    const { todo } = this.props;
 
     const element = this.state.editing
       ? <TodoTextInput

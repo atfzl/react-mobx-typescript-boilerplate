@@ -5,7 +5,9 @@
   ],
   "rules": {
     "member-ordering": [false],
-    "ter-indent": [true, 2],
+    "ter-indent": [
+      false
+    ],
     "quotemark": [
       "single"
     ],

@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { Footer } from 'components/Footer';
 import { ITodoActions, TodoItem } from 'components/TodoItem';
 import { TodoModel } from 'models/TodoModel';
 
@@ -23,7 +22,7 @@ export class TodoList extends React.Component<ITodoListProps, any> {
   }
 
   private renderToggleAll() {
-    const { todos, ...actions } = this.props;
+    const { todos } = this.props;
     const completedCount = todos.length;
     if (todos.length > 0) {
       return (

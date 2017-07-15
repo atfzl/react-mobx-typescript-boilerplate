@@ -12,6 +12,8 @@
     "noImplicitReturns": false,
     "removeComments": true,
     "strictNullChecks": false,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "outDir": "build",
     "lib": [
       "es6",

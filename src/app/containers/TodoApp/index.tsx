@@ -8,7 +8,6 @@ import { Header } from 'components/Header';
 import { TodoList } from 'components/TodoList';
 import { STORE_ROUTER, STORE_TODO } from 'constants/stores';
 import { TODO_FILTER_LOCATION_HASH, TodoFilter } from 'constants/todos';
-import { TodoModel } from 'models/TodoModel';
 import { RouterStore, TodoStore } from 'stores';
 
 type TodoAppProps = RouteComponentProps<any>;
@@ -30,7 +29,7 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
     this.checkLocationChange();
   }
 
-  public componentWillReceiveProps(nextProps: TodoAppProps, nextContext: any) {
+  public componentWillReceiveProps() {
     this.checkLocationChange();
   }
 
