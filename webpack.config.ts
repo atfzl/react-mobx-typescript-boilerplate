@@ -4,7 +4,7 @@ import * as path from 'path';
 import HtmlWebpackPlugin = require('html-webpack-plugin');
 import ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const isProduction = process.argv.indexOf('-p') >= 0;
+const DEBUG = !process.argv.includes('-p');
 const sourcePath = path.join(__dirname, './src');
 const outPath = path.join(__dirname, './dist');
 
@@ -40,9 +40,9 @@ const config: webpack.Configuration = {
       // .ts, .tsx
       {
         test: /\.tsx?$/,
-        use: isProduction
-          ? 'awesome-typescript-loader?module=esnext'
-          : ['react-hot-loader', 'awesome-typescript-loader'],
+        use: DEBUG
+          ? ['react-hot-loader', 'awesome-typescript-loader']
+          : 'awesome-typescript-loader?module=esnext',
       },
       // css
       {
@@ -54,7 +54,7 @@ const config: webpack.Configuration = {
               loader: 'css-loader',
               query: {
                 modules: true,
-                sourceMap: !isProduction,
+                sourceMap: DEBUG,
                 importLoaders: 1,
                 localIdentName: '[local]__[hash:base64:5]',
               },
@@ -68,7 +68,7 @@ const config: webpack.Configuration = {
                   require('postcss-cssnext')(),
                   require('postcss-reporter')(),
                   require('postcss-browser-reporter')({
-                    disabled: isProduction,
+                    disabled: !DEBUG,
                   }),
                 ],
               },
@@ -92,7 +92,7 @@ const config: webpack.Configuration = {
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin({
       filename: 'styles.css',
-      disable: !isProduction,
+      disable: DEBUG,
     }),
     new HtmlWebpackPlugin({
       template: 'assets/index.html',
