@@ -29,8 +29,8 @@ const config: webpack.Configuration = {
   },
   output: {
     path: outPath,
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].chunk.js',
+    filename: DEBUG ? '[name].js' : '[name].[chunkhash:8].js',
+    chunkFilename: DEBUG ? '[name].chunk.js' : '[name].[chunkhash:8].chunk.js',
     publicPath: '/',
   },
   target: 'web',
