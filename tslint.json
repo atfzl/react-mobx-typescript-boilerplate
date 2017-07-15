@@ -9,6 +9,12 @@
     "quotemark": [
       "single"
     ],
-    "arrow-parens": false
+    "arrow-parens": false,
+    "ordered-imports": [
+      false
+    ],
+    "object-literal-sort-keys": [
+      false
+    ]
   }
 }
