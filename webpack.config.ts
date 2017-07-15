@@ -8,6 +8,12 @@ const DEBUG = !process.argv.includes('-p');
 const sourcePath = path.join(__dirname, './src');
 const outPath = path.join(__dirname, './dist');
 
+const GLOBALS = {
+  'process.env.NODE_ENV': DEBUG ? '"development"' : '"production"',
+  'process.env.BROWSER': true,
+  __DEV__: DEBUG,
+};
+
 const config: webpack.Configuration = {
   context: sourcePath,
   entry: {
@@ -83,6 +89,7 @@ const config: webpack.Configuration = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin(GLOBALS),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
