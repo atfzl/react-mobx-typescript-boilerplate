@@ -1,8 +1,8 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
 
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin = require('html-webpack-plugin');
+import ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const isProduction = process.argv.indexOf('-p') >= 0;
 const sourcePath = path.join(__dirname, './src');
