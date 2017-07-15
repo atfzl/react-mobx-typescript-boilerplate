@@ -1,10 +1,13 @@
 import * as webpack from 'webpack';
 import * as path from 'path';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import HtmlWebpackPlugin = require('html-webpack-plugin');
 import ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const DEBUG = !process.argv.includes('-p');
+const ANALYZE = process.argv.includes('--analyze');
+
 const sourcePath = path.join(__dirname, './src');
 const outPath = path.join(__dirname, './dist');
 
@@ -12,14 +15,6 @@ const config: webpack.Configuration = {
   context: sourcePath,
   entry: {
     main: './index.ts',
-    vendor: [
-      'react',
-      'react-dom',
-      'react-router',
-      'mobx',
-      'mobx-react',
-      'mobx-react-router',
-    ],
   },
   output: {
     path: outPath,
@@ -114,5 +109,9 @@ const config: webpack.Configuration = {
     net: 'empty',
   },
 };
+
+if (ANALYZE && config.plugins) {
+  config.plugins = config.plugins.concat([new BundleAnalyzerPlugin()]);
+}
 
 module.exports = config;

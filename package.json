@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server -d --history-api-fallback --hot --inline --colors --port 3000 --open",
     "build": "webpack -p --progress --colors",
+    "analyze": "webpack -p -- --analyze",
     "lint": "tslint src/**/*.{ts,tsx}",
     "format": "prettier --single-quote --trailing-comma=all --parser=typescript src/**/*.{ts,tsx} --write",
     "storybook": "start-storybook -p 6006",
@@ -46,6 +47,7 @@
     "typescript": "^2.4.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.2.0",
+    "webpack-bundle-analyzer": "^2.8.3",
     "webpack-dev-server": "^2.5.0",
     "webpack-hot-middleware": "^2.18.0"
   },
