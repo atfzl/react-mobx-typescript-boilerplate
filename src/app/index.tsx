@@ -4,12 +4,17 @@ import { Provider } from 'mobx-react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Route, Router, Switch } from 'react-router';
+import { asyncComponent } from 'react-async-component';
 
 import { STORE_ROUTER, STORE_TODO } from 'constants/stores';
 import Root from 'containers/Root';
 import TodoApp from 'containers/TodoApp';
 import TodoModel from 'models/TodoModel';
 import { RouterStore, TodoStore } from 'stores';
+
+const Button = asyncComponent({
+  resolve: () => import(/* webpackChunkName: "Button" */ 'components/Button'),
+});
 
 // enable MobX strict mode
 useStrict(true);
@@ -35,6 +40,7 @@ ReactDOM.render(
     <Root>
       <Router history={history}>
         <Switch>
+          <Route path="/button" component={Button} />
           <Route path="/" component={TodoApp} />
         </Switch>
       </Router>

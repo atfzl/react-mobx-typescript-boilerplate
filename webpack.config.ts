@@ -23,7 +23,8 @@ const config: webpack.Configuration = {
   },
   output: {
     path: outPath,
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].chunk.js',
     publicPath: '/',
   },
   target: 'web',
@@ -40,7 +41,7 @@ const config: webpack.Configuration = {
       {
         test: /\.tsx?$/,
         use: isProduction
-          ? 'awesome-typescript-loader?module=es6'
+          ? 'awesome-typescript-loader?module=esnext'
           : ['react-hot-loader', 'awesome-typescript-loader'],
       },
       // css

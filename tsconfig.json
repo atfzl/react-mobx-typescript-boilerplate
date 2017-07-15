@@ -8,7 +8,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "declaration": false,
-    "removeComments": true,
     "strictNullChecks": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
