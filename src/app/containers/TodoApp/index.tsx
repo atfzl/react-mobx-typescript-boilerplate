@@ -68,7 +68,6 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
 
   public render() {
     const todoStore = this.props[STORE_TODO] as TodoStore;
-    const { children } = this.props;
     const { filter } = this.state;
     const filteredTodos = this.getFilteredTodo(filter);
 
@@ -92,7 +91,6 @@ export class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
           editTodo={todoStore.editTodo}
         />
         {footer}
-        {children}
       </div>
     );
   }
