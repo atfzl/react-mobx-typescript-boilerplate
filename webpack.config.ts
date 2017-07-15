@@ -37,7 +37,10 @@ const config: webpack.Configuration = {
         test: /\.tsx?$/,
         use: DEBUG
           ? ['react-hot-loader', 'awesome-typescript-loader']
-          : 'awesome-typescript-loader?module=esnext',
+          : [
+              'babel-loader?plugins=ramda',
+              'awesome-typescript-loader?module=esnext',
+            ],
       },
       // css
       {
