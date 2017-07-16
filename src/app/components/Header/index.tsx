@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as _ from 'lodash';
 
 import TodoTextInput from 'components/TodoTextInput';
 import TodoModel from 'models/TodoModel';
@@ -23,9 +22,7 @@ class Header extends React.Component<IHeaderProps, any> {
   public render() {
     return (
       <header>
-        <h1>
-          Todos {_.join([1, 2], '~')}
-        </h1>
+        <h1>Todos</h1>
         <TodoTextInput
           newTodo
           onSave={this.handleSave}

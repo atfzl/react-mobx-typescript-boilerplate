@@ -1,6 +1,8 @@
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
+import * as _ from 'lodash';
+
 import * as style from './style.css';
 
 import Footer from 'components/Footer';
@@ -38,16 +40,14 @@ class TodoApp extends React.Component<TodoAppProps, ITodoAppState> {
     const filter = Object.keys(TODO_FILTER_LOCATION_HASH)
       .map(key => Number(key) as TodoFilter)
       .find(
-        f =>
-          TODO_FILTER_LOCATION_HASH[f] ===
-          (router.location && router.location.hash),
+        f => TODO_FILTER_LOCATION_HASH[f] === _.get(router, 'location.hash'),
       );
     this.setState({ filter });
   }
 
   private handleFilter(filter: TodoFilter) {
     const router = this.props[STORE_ROUTER] as RouterStore;
-    const currentHash = router.location && router.location.hash;
+    const currentHash = _.get(router, 'location.hash');
     const nextHash = TODO_FILTER_LOCATION_HASH[filter];
     if (currentHash !== nextHash) {
       router.replace(nextHash);
