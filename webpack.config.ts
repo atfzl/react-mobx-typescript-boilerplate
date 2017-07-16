@@ -101,6 +101,7 @@ const config: webpack.Configuration = {
   ],
   devServer: {
     stats: 'errors-only',
+    overlay: true,
   },
   node: {
     // workaround for webpack-dev-server issue
