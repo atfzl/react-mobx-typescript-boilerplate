@@ -4,6 +4,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import HtmlWebpackPlugin = require('html-webpack-plugin');
 import ExtractTextPlugin = require('extract-text-webpack-plugin');
+import CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const DEBUG = !process.argv.includes('-p');
 const ANALYZE = process.argv.includes('--analyze');
@@ -83,6 +84,7 @@ const config: webpack.Configuration = {
       'process.env.BROWSER': true,
       __DEV__: DEBUG,
     }),
+    new CaseSensitivePathsPlugin(),
     new webpack.NamedModulesPlugin(),
     // Move modules that occur in multiple entry chunks to a new entry chunk (the commons chunk).
     // https://webpack.js.org/plugins/commons-chunk-plugin/
