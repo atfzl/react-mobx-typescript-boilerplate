@@ -35,7 +35,8 @@ const config: webpack.Configuration = {
     loaders: [
       // .ts, .tsx
       {
-        test: /\.tsx?$/,
+        test: /\.[t|j]sx?$/,
+        exclude: /node_modules/,
         use: DEBUG
           ? ['react-hot-loader', 'awesome-typescript-loader']
           : ['babel-loader', 'awesome-typescript-loader?module=esnext'],
