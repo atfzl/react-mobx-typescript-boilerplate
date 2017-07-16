@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { add } from 'ramda';
+import * as _ from 'lodash';
 
 import TodoTextInput from 'components/TodoTextInput';
 import TodoModel from 'models/TodoModel';
@@ -24,7 +24,7 @@ class Header extends React.Component<IHeaderProps, any> {
     return (
       <header>
         <h1>
-          Todos {add(1, 2)}
+          Todos {_.join([1, 2], '~')}
         </h1>
         <TodoTextInput
           newTodo
