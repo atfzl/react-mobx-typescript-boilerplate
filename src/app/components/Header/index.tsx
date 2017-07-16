@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { add } from 'ramda';
 
 import TodoTextInput from 'components/TodoTextInput';
 import TodoModel from 'models/TodoModel';
@@ -22,7 +23,9 @@ class Header extends React.Component<IHeaderProps, any> {
   public render() {
     return (
       <header>
-        <h1>Todos</h1>
+        <h1>
+          Todos {add(1, 2)}
+        </h1>
         <TodoTextInput
           newTodo
           onSave={this.handleSave}
