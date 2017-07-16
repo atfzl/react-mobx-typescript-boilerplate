@@ -12,6 +12,13 @@ const ANALYZE = process.argv.includes('--analyze');
 const sourcePath = path.join(__dirname, './src');
 const outPath = path.join(__dirname, './dist');
 
+/**
+ * set this so babel can use production env from .babelrc
+ */
+if (!DEBUG) {
+  process.env.NODE_ENV = 'production';
+}
+
 const config: webpack.Configuration = {
   context: sourcePath,
   entry: {
